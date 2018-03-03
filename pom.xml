@@ -1,0 +1,375 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ucpaas.sms</groupId>
+	<artifactId>smsa-task-finance</artifactId>
+	<packaging>war</packaging>
+	<version>5.19.2.1</version>
+	<name>smsa-task-finance Maven Webapp</name>
+	<url>http://sms.ucpaas.com</url>
+
+	<properties>
+		<!-- jsmsframework -->
+		<jsms-framework.version>5.3.1-SNAPSHOT</jsms-framework.version>
+		
+		<!-- 项目文件编码 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- 编译时的编码 -->
+		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+
+		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+
+		<commons-dbcp2.version>2.0.1</commons-dbcp2.version>
+		<commons-pool2.version>2.2</commons-pool2.version>
+
+		<gson.version>2.2.4</gson.version>
+		<mybatis.version>3.2.7</mybatis.version>
+		<mybatis-spring.version>1.2.2</mybatis-spring.version>
+		<mysql-connector-java.version>5.1.30</mysql-connector-java.version>
+		<quartz.version>2.2.1</quartz.version>
+
+		<spring.version>4.3.9.RELEASE</spring.version>
+		<jackson.version>2.6.3</jackson.version>
+		<smsa-common-util.version>1.0.2.RELEASE</smsa-common-util.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.ucpaas.sms</groupId>
+			<artifactId>smsa-common-util</artifactId>
+			<version>${smsa-common-util.version}</version>
+
+			<exclusions>
+				<exclusion>
+					<groupId>net.sf.ehcache</groupId>
+					<artifactId>ehcache-core</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>net.sf.ehcache</groupId>
+					<artifactId>ehcache-web</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context-support</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>net.sourceforge.jexcelapi</groupId>
+					<artifactId>jxl</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>javax.validation</groupId>
+					<artifactId>validation-api</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>org.hibernate</groupId>
+					<artifactId>hibernate-validator</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>javax.servlet</groupId>
+					<artifactId>javax.servlet-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jsmsframework</groupId>
+			<artifactId>jsms-finance</artifactId>
+			<version>${jsms-framework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jsmsframework</groupId>
+			<artifactId>jsms-order</artifactId>
+			<version>${jsms-framework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jsmsframework</groupId>
+			<artifactId>jsms-user</artifactId>
+			<version>${jsms-framework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jsmsframework</groupId>
+			<artifactId>jsms-audit</artifactId>
+			<version>${jsms-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jsmsframework</groupId>
+			<artifactId>jsms-channel</artifactId>
+			<version>${jsms-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jsmsframework</groupId>
+			<artifactId>jsms-sale-credit</artifactId>
+			<version>${jsms-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jsmsframework</groupId>
+			<artifactId>jsms-common</artifactId>
+			<version>${jsms-framework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ibm.icu</groupId>
+			<artifactId>icu4j</artifactId>
+			<version>4.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>${commons-dbcp2.version}</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-pool2</artifactId>
+		    <version>${commons-pool2.version}</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>${gson.version}</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis</artifactId>
+		    <version>${mybatis.version}</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis-spring</artifactId>
+		    <version>${mybatis-spring.version}</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>${mysql-connector-java.version}</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.quartz-scheduler</groupId>
+		    <artifactId>quartz</artifactId>
+		    <version>${quartz.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax.servlet-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+	</dependencies>
+	
+	<!-- 分环境打包 -->
+	<profiles>
+		<profile>
+			<!-- 打包命令命令 mvn package -Pdev -->
+			<id>dev</id> <!-- 开发环境 -->
+			<properties>
+				<env>development</env>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<!-- 打包命令命令 mvn package -Pdevtest -->
+			<id>devtest</id> <!-- 开放测试环境 -->
+			<properties>
+				<env>devtest</env>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 打包命令命令 mvn package -Ptest -->
+			<id>test</id> <!-- 测试环境 -->
+			<properties>
+				<env>test</env>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 打包命令命令 mvn package -Pprod_yidong -->
+			<id>prod_yidong</id> <!-- 生产环境 -->
+			<properties>
+				<env>prod_yidong</env>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 打包命令命令 mvn package -Pprod_ali -->
+			<id>prod_ali</id> <!-- 阿里环境 -->
+			<properties>
+				<env>prod_ali</env>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 打包命令命令 mvn package -Pprod -->
+			<id>prod</id> <!-- 阿里环境和代理商环境合并后 -->
+			<properties>
+				<env>prod</env>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 打包命令命令 mvn package -Pprod_bu -->
+			<id>prod_bu</id> <!-- 运营商合作BU短信平台 -->
+			<properties>
+				<env>prod_bu</env>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 打包命令命令 mvn package -Pprod_jd -->
+			<id>prod_jd</id> <!-- 京东环境 -->
+			<properties>
+				<env>prod_jd</env>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 打包命令命令 mvn package -Pdev -->
+			<id>dev-30</id> <!-- 开发环境 -->
+			<properties>
+				<env>devtest-30</env>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 打包命令命令 mvn package -Pdev_wj -->
+			<id>dev_wj</id> <!-- 开发环境 -->
+			<properties>
+				<env>dev_wj</env>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 打包命令命令 mvn package -Pprod_preview -->
+			<id>prod_preview</id> <!-- 阿里环境和代理商环境合并后 -->
+			<properties>
+				<env>prod_preview</env>
+			</properties>
+		</profile>
+	</profiles>
+	
+	<build>
+		<finalName>${project.artifactId}-${project.version}-${env}</finalName>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+						<fork>true</fork>
+						<executable>${JAVA_HOME}/bin/javac</executable>
+						<encoding>UTF-8</encoding>
+
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<skip>true</skip>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<filters>
+			<filter>src/main/environment/${env}.properties</filter>
+		</filters>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.ftl</include>
+					<include>**/*.xml</include>
+					<include>**/*.jpg</include>
+					<include>**/*.gif</include>
+					<include>oscache.properties</include>
+				</includes>
+				<!-- 是否替换资源中的属性 -->
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+				<!-- 是否替换资源中的属性 -->
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>system.properties</include>
+					<include>application.properties</include>
+				</includes>
+				<!-- 是否替换资源中的属性 -->
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+	
+</project>

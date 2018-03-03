@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ucpaas.sms.task.mapper.access.ClientFailReturnMapper">
+
+
+    <resultMap id="rowMapper" type="com.ucpaas.sms.task.entity.access.ClientFailReturn">
+        <result property="id" jdbcType="INTEGER" column="id"/>
+        <result property="clientid" jdbcType="VARCHAR" column="clientid"/>
+        <result property="agentId" jdbcType="INTEGER" column="agent_id"/>
+        <result property="departmentId" jdbcType="INTEGER" column="department_id"/>
+        <result property="operatorstype" jdbcType="INTEGER" column="operatorstype"/>
+        <result property="paytype" jdbcType="INTEGER" column="paytype"/>
+        <result property="chargeRule" jdbcType="INTEGER" column="charge_rule"/>
+        <result property="smstype" jdbcType="INTEGER" column="smstype"/>
+        <result property="subId" jdbcType="VARCHAR" column="sub_id"/>
+        <result property="productType" jdbcType="INTEGER" column="product_type"/>
+        <result property="operatorCode" jdbcType="INTEGER" column="operator_code"/>
+        <result property="areaCode" jdbcType="INTEGER" column="area_code"/>
+        <result property="dueTime" jdbcType="TIMESTAMP" column="due_time"/>
+        <result property="unitPrice" jdbcType="DECIMAL" column="unit_price"/>
+        <result property="submitsuccess" jdbcType="INTEGER" column="submitsuccess"/>
+        <result property="submitfail" jdbcType="INTEGER" column="submitfail"/>
+        <result property="reportfail" jdbcType="INTEGER" column="reportfail"/>
+        <result property="returnNumber" jdbcType="INTEGER" column="return_number"/>
+        <result property="belongSale" jdbcType="BIGINT" column="belong_sale"/>
+        <result property="refundState" jdbcType="INTEGER" column="refund_state"/>
+        <result property="date" jdbcType="INTEGER" column="date"/>
+        <result property="createTime" jdbcType="TIMESTAMP" column="create_time"/>
+    </resultMap>
+
+    <sql id="BASE_COLUMN_LIST">
+        id,
+        clientid,
+        agent_id,
+        department_id,
+        operatorstype,
+        paytype,
+        charge_rule,
+        smstype,
+        sub_id,
+        product_type,
+        operator_code,
+        area_code,
+        due_time,
+        unit_price,
+        submitsuccess,
+        submitfail,
+        reportfail,
+        return_number,
+        belong_sale,
+        refund_state,
+        date,
+        create_time
+    </sql>
+
+    <insert id="insert" parameterType="com.ucpaas.sms.task.entity.access.ClientFailReturn">
+        INSERT INTO t_sms_client_fail_return
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="clientid != null and clientid != ''">
+                clientid,
+            </if>
+            <if test="paytype != null">
+                paytype,
+            </if>
+            <if test="chargeRule != null">
+                charge_rule,
+            </if>
+            <if test="smstype != null">
+                smstype,
+            </if>
+            <if test="subId != null and subId != ''">
+                sub_id,
+            </if>
+            <if test="productType != null">
+                product_type,
+            </if>
+            <if test="operatorCode != null">
+                operator_code,
+            </if>
+            <if test="areaCode != null">
+                area_code,
+            </if>
+            <if test="dueTime != null">
+                due_time,
+            </if>
+            <if test="unitPrice != null">
+                unit_price,
+            </if>
+            <if test="submitsuccess != null">
+                submitsuccess,
+            </if>
+            <if test="submitfail != null">
+                submitfail,
+            </if>
+            <if test="reportfail != null">
+                reportfail,
+            </if>
+            <if test="returnNumber != null">
+                return_number,
+            </if>
+            <if test="refundState != null">
+                refund_state,
+            </if>
+            <if test="date != null">
+                date,
+            </if>
+            <if test="createTime != null">
+                create_time
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="clientid != null">
+                #{clientid},
+            </if>
+            <if test="paytype != null">
+                #{paytype},
+            </if>
+            <if test="chargeRule != null">
+                #{chargeRule},
+            </if>
+            <if test="smstype != null">
+                #{smstype},
+            </if>
+            <if test="subId != null">
+                #{subId},
+            </if>
+            <if test="productType != null">
+                #{productType},
+            </if>
+            <if test="operatorCode != null">
+                #{operatorCode},
+            </if>
+            <if test="areaCode != null">
+                #{areaCode},
+            </if>
+            <if test="dueTime != null">
+                #{dueTime},
+            </if>
+            <if test="unitPrice != null">
+                #{unitPrice},
+            </if>
+            <if test="submitsuccess != null">
+                #{submitsuccess},
+            </if>
+            <if test="submitfail != null">
+                #{submitfail},
+            </if>
+            <if test="reportfail != null">
+                #{reportfail},
+            </if>
+            <if test="returnNumber != null">
+                #{returnNumber},
+            </if>
+            <if test="refundState != null">
+                #{refundState},
+            </if>
+            <if test="date != null">
+                #{date},
+            </if>
+            <if test="createTime != null">
+                now()
+            </if>
+        </trim>
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO t_sms_client_fail_return (
+            clientid,
+            agent_id,
+            department_id,
+            operatorstype,
+            paytype,
+            charge_rule,
+            smstype,
+            sub_id,
+            product_type,
+            operator_code,
+            area_code,
+            due_time,
+            unit_price,
+            submitsuccess,
+            submitfail,
+            reportfail,
+            return_number,
+            belong_sale,
+            refund_state,
+            date,
+            create_time
+        )VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.clientid},
+            #{item.agentId},
+            #{item.departmentId},
+            #{item.operatorstype},
+            #{item.paytype},
+            #{item.chargeRule},
+            #{item.smstype},
+            #{item.subId},
+            #{item.productType},
+            #{item.operatorCode},
+            #{item.areaCode},
+            #{item.dueTime},
+            #{item.unitPrice},
+            #{item.submitsuccess},
+            #{item.submitfail},
+            #{item.reportfail},
+            #{item.returnNumber},
+            #{item.belongSale},
+            #{item.refundState},
+            #{item.date},
+            now()
+            )
+        </foreach>
+    </insert>
+
+    <!--
+    <delete id="delete">
+        DELETE FROM t_sms_client_fail_return WHERE id = #{id}
+    </delete>
+    -->
+
+    <update id="update" parameterType="com.ucpaas.sms.task.entity.access.ClientFailReturn">
+        UPDATE t_sms_client_fail_return
+        SET
+            clientid      = #{clientid},
+            paytype       = #{paytype},
+            charge_rule   = #{chargeRule},
+            smstype       = #{smstype},
+            sub_id        = #{subId},
+            product_type  = #{productType},
+            operator_code = #{operatorCode},
+            area_code     = #{areaCode},
+            due_time      = #{dueTime},
+            unit_price    = #{unitPrice},
+            submitsuccess = #{submitsuccess},
+            submitfail    = #{submitfail},
+            reportfail    = #{reportfail},
+            return_number = #{returnNumber},
+            refund_state  = #{refundState},
+            date          = #{date},
+            create_time   = #{createTime}
+        WHERE
+            id = #{id}
+    </update>
+
+    <update id="updateSelective" parameterType="com.ucpaas.sms.task.entity.access.ClientFailReturn">
+        UPDATE t_sms_client_fail_return
+        <set>
+            <if test="clientid != null and clientid != ''">
+                clientid = #{clientid},
+            </if>
+            <if test="paytype != null">
+                paytype = #{paytype},
+            </if>
+            <if test="chargeRule != null">
+                charge_rule = #{chargeRule},
+            </if>
+            <if test="smstype != null">
+                smstype = #{smstype},
+            </if>
+            <if test="subId != null and subId != ''">
+                sub_id = #{subId},
+            </if>
+            <if test="productType != null">
+                product_type = #{productType},
+            </if>
+            <if test="operatorCode != null">
+                operator_code = #{operatorCode},
+            </if>
+            <if test="areaCode != null">
+                area_code = #{areaCode},
+            </if>
+            <if test="dueTime != null">
+                due_time = #{dueTime},
+            </if>
+            <if test="unitPrice != null">
+                unit_price = #{unitPrice},
+            </if>
+            <if test="submitsuccess != null">
+                submitsuccess = #{submitsuccess},
+            </if>
+            <if test="submitfail != null">
+                submitfail = #{submitfail},
+            </if>
+            <if test="reportfail != null">
+                reportfail = #{reportfail},
+            </if>
+            <if test="returnNumber != null">
+                return_number = #{returnNumber},
+            </if>
+            <if test="refundState != null">
+                refund_state = #{refundState},
+            </if>
+            <if test="date != null">
+                date = #{date},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime}
+            </if>
+        </set>
+        WHERE
+        id = #{id}
+    </update>
+
+    <update id="updateBelongSale" parameterType="com.ucpaas.sms.task.entity.access.ClientFailReturn">
+        UPDATE t_sms_client_fail_return
+        SET belong_sale = #{belongSale}
+        WHERE
+        id = #{id}
+    </update>
+
+    <update id="updateBatchBelongSale" parameterType="java.util.List">
+        update t_sms_client_fail_return
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="belong_sale =case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id=#{item.id} then #{item.belongSale}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #{item.id}
+        </foreach>
+    </update>
+
+    <update id="updateBatchAgentId" parameterType="java.util.List">
+        update t_sms_client_fail_return
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="agent_id =case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id=#{item.id} then #{item.agentId}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #{item.id}
+        </foreach>
+    </update>
+
+    <update id="updateBatchDepartmentId" parameterType="java.util.List">
+        update t_sms_client_fail_return
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="department_id =case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id=#{item.id} then #{item.departmentId}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #{item.id}
+        </foreach>
+    </update>
+
+
+
+    <update id="updateBatchOperatorstype" parameterType="java.util.List">
+        update t_sms_client_fail_return
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="operatorstype =case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id=#{item.id} then #{item.operatorstype}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #{item.id}
+        </foreach>
+    </update>
+
+    <select id="getById" resultMap="rowMapper">
+        SELECT
+        <include refid="BASE_COLUMN_LIST"/>
+        FROM t_sms_client_fail_return
+        WHERE
+        id = #{id}
+    </select>
+
+    <select id="findHasReturnGroupByDay" resultType="com.ucpaas.sms.task.entity.access.ClientFailReturn">
+        select
+          clientid,
+          date as "date",
+          SUM(return_number) as returnNumber
+        from t_sms_client_fail_return
+        where refund_state = 1
+        GROUP BY clientid, date
+        order by date
+    </select>
+
+    <select id="getStartFixDay" resultType="string">
+        select date from t_sms_client_fail_return ORDER BY date limit 1
+    </select>
+
+    <select id="getEndFixDay" resultType="string">
+        select date from t_sms_client_fail_return ORDER BY date desc limit 1
+    </select>
+
+    <select id="queryList" resultMap="rowMapper">
+        SELECT
+        <include refid="BASE_COLUMN_LIST"/>
+        FROM t_sms_client_fail_return
+        <trim prefix="WHERE" prefixOverrides="AND |OR ">
+            <if test="params.id != null">
+                and id = #{params.id}
+            </if>
+            <if test="params.clientid != null and params.clientid != ''">
+                and clientid = #{params.clientid}
+            </if>
+            <if test="params.paytype != null">
+                and paytype = #{params.paytype}
+            </if>
+            <if test="params.chargeRule != null">
+                and charge_rule = #{params.chargeRule}
+            </if>
+            <if test="params.smstype != null">
+                and smstype = #{params.smstype}
+            </if>
+            <if test="params.subId != null and params.subId != ''">
+                and sub_id = #{params.subId}
+            </if>
+            <if test="params.productType != null">
+                and product_type = #{params.productType}
+            </if>
+            <if test="params.operatorCode != null">
+                and operator_code = #{params.operatorCode}
+            </if>
+            <if test="params.areaCode != null">
+                and area_code = #{params.areaCode}
+            </if>
+            <if test="params.dueTime != null">
+                and due_time = #{params.dueTime}
+            </if>
+            <if test="params.unitPrice != null">
+                and unit_price = #{params.unitPrice}
+            </if>
+            <if test="params.submitsuccess != null">
+                and submitsuccess = #{params.submitsuccess}
+            </if>
+            <if test="params.submitfail != null">
+                and submitfail = #{params.submitfail}
+            </if>
+            <if test="params.reportfail != null">
+                and reportfail = #{params.reportfail}
+            </if>
+            <if test="params.returnNumber != null">
+                and return_number = #{params.returnNumber}
+            </if>
+            <if test="params.refundState != null">
+                and refund_state = #{params.refundState}
+            </if>
+            <if test="params.date != null">
+                and date = #{params.date}
+            </if>
+            <if test="params.createTime != null">
+                and create_time = #{params.createTime}
+            </if>
+        </trim>
+    </select>
+
+    <select id="findList" resultMap="rowMapper">
+        SELECT
+        <include refid="BASE_COLUMN_LIST"/>
+        FROM t_sms_client_fail_return
+        WHERE
+        1 = 1
+        <if test="fixBelongSale != null">
+            and belong_sale is null
+        </if>
+        <if test="fixAgentId != null">
+            and agent_id is null
+        </if>
+        <if test="fixDepartmentId != null">
+            and department_id is null
+        </if>
+        <if test="fixOperatorstype != null">
+            and operatorstype is null
+        </if>
+        <if test="id != null and id != ''">
+            and id = #{id}
+        </if>
+        <if test="clientid != null and clientid != ''">
+            and clientid = #{clientid}
+        </if>
+        <if test="paytype != null">
+            and paytype = #{paytype}
+        </if>
+        <if test="chargeRule != null">
+            and charge_rule = #{chargeRule}
+        </if>
+        <if test="smstype != null">
+            and smstype = #{smstype}
+        </if>
+        <if test="subId != null and subId != ''">
+            and sub_id = #{subId}
+        </if>
+        <if test="productType != null">
+            and product_type = #{productType}
+        </if>
+        <if test="operatorCode != null">
+            and operator_code = #{operatorCode}
+        </if>
+        <if test="areaCode != null">
+            and area_code = #{areaCode}
+        </if>
+        <if test="dueTime != null">
+            and due_time = #{dueTime}
+        </if>
+        <if test="unitPrice != null">
+            and unit_price = #{unitPrice}
+        </if>
+        <if test="submitsuccess != null">
+            and submitsuccess = #{submitsuccess}
+        </if>
+        <if test="submitfail != null">
+            and submitfail = #{submitfail}
+        </if>
+        <if test="reportfail != null">
+            and reportfail = #{reportfail}
+        </if>
+        <if test="returnNumber != null">
+            and return_number = #{returnNumber}
+        </if>
+        <if test="refundState != null">
+            and refund_state = #{refundState}
+        </if>
+        <if test="date != null">
+            and date = #{date}
+        </if>
+        <if test="createTime != null">
+            and create_time = #{createTime}
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        SELECT COUNT(0)
+        FROM t_sms_client_fail_return
+        WHERE
+        1 = 1
+        <if test="id != null and id != ''">
+            and id = #{id}
+        </if>
+        <if test="clientid != null and clientid != ''">
+            and clientid = #{clientid}
+        </if>
+        <if test="paytype != null">
+            and paytype = #{paytype}
+        </if>
+        <if test="chargeRule != null">
+            and charge_rule = #{chargeRule}
+        </if>
+        <if test="smstype != null">
+            and smstype = #{smstype}
+        </if>
+        <if test="subId != null and subId != ''">
+            and sub_id = #{subId}
+        </if>
+        <if test="productType != null">
+            and product_type = #{productType}
+        </if>
+        <if test="operatorCode != null">
+            and operator_code = #{operatorCode}
+        </if>
+        <if test="areaCode != null">
+            and area_code = #{areaCode}
+        </if>
+        <if test="dueTime != null">
+            and due_time = #{dueTime}
+        </if>
+        <if test="unitPrice != null">
+            and unit_price = #{unitPrice}
+        </if>
+        <if test="submitsuccess != null">
+            and submitsuccess = #{submitsuccess}
+        </if>
+        <if test="submitfail != null">
+            and submitfail = #{submitfail}
+        </if>
+        <if test="reportfail != null">
+            and reportfail = #{reportfail}
+        </if>
+        <if test="returnNumber != null">
+            and return_number = #{returnNumber}
+        </if>
+        <if test="refundState != null">
+            and refund_state = #{refundState}
+        </if>
+        <if test="date != null">
+            and date = #{date}
+        </if>
+        <if test="createTime != null">
+            and create_time = #{createTime}
+        </if>
+    </select>
+
+    <delete id="deleteByDate">
+        DELETE s FROM t_sms_client_fail_return s WHERE s.date = #{date}
+    </delete>
+</mapper>
+
